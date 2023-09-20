@@ -7,9 +7,7 @@ from os.path import exists
 import glob
 import sys
 
-#path_output = "/home/ygari/scratch/"
 path_output = ""
-#path_input = "/home/ygari/rla_input/"
 path_input = ""
 
 def simulateCase(case):
@@ -39,14 +37,6 @@ def simulateCases(casesFilename, processes):
 	with open(casesFilename) as casesFile:
 		pool = Pool(processes=processes)  # start n worker processes
 		cases = [case.strip() for case in casesFile.readlines()]
-
-		# this chunksize permits executing first all the cases with run=1, then run=2, etc...
-		#chunksize, remainder = divmod(len(cases) / 10, processes)
-		#if remainder > 0:
-		#	chunksize = chunksize + 1
-		#chunksize = 30
-		#print("chinksize: " + str(chunksize))
-		#pool.map(simulateCase, cases, chunksize)
 		pool.map(simulateCase, cases)
 
 
@@ -57,13 +47,10 @@ if __name__ == '__main__':
 	except:
 		PROCESSES = cpu_count()
 		CASES_FILE = "cases"
-	
-	#print("\n >>> Initializing simulations...")
-	#call([path_input+"scripts/init-simulations.sh"])
+
 
 	print("\n >>> Using " + str(PROCESSES) + " workers...")
 
-	#for casesFilename in sorted(glob.glob('cases?.csv')):
 	simulateCases(path_input + CASES_FILE, PROCESSES)
 
 	print("DONE")

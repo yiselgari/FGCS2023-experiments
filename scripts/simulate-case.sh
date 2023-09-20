@@ -1,23 +1,9 @@
 #!/bin/bash
 
-#path_output="/home/ygari/scratch/"
 path_output=""
-#path_input="/home/ygari/rla_input/"
 path_input=""
 
-classpath=$path_input"./target/classes"
-
-OTHER_LIBS=$path_input"./target/lib"
-
-for i in `find $OTHER_LIBS -name '*.jar' | grep -v OLD`
-do
-	classpath=$classpath":"$i
-done
-
-echo "------------------- LIBRARIES ------------------"
-echo $classpath
-echo "------------------------------------------------"
-echo
+jarpath=$path_input"./cloudautoscaling-1.0.jar"
 
 # receive simulation case parameters
 caseParameters=$1
@@ -34,7 +20,7 @@ else
 	echo "*****"
 	echo "STARTING EXPERIMENT CASE: $caseParameters"
 	echo "*****"
-	java -Xmx256m -cp "$classpath" -Djava.io.tmpdir=~/scratch/cloudautoscaling/tmp com.cloudautoscaling.experiments.StartSingleExperimentCase $caseParameters
+	java  -Xmx256m -cp "$jarpath" com.cloudautoscaling.experiments.StartSingleExperimentCase $caseParameters
 	echo $caseID >> executedExperiments
 fi
 rm sim_trace 2> /dev/null
