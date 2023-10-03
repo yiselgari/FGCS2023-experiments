@@ -72,7 +72,7 @@ casesRL_test.csv				# Run configurations
 
 ### Execution details and used libraries
 
-The experiments reported in the paper were run on a virtul node of TOKO with a AMD Ryzen 7 2700/3700x with 8 cores, 16 logical processors, and 64 GB of RAM memory running (ToDo:SO?), Java 17 and Apache Maven 3.8.4.
+The experiments reported in the paper were run on a virtul node of TOKO with a AMD Ryzen 7 2700/3700x with 8 cores, 16 logical processors, and 64 GB of RAM memory running Slackware Linux 14.0 and Java version 17.
 The description of the four workflows studied are available on-line through the Pegasus WorkflowGenerator: https://confluence.pegasus.isi.edu/display/pegasus/WorkflowHub. 
 The implementation of the Q-learning and SARSA algorithms was provided by the Brown-UMBC Reinforcement Learning and Planning (BURLAP) (http://burlap.cs.brown.edu/) Java code library version 3.0. 
 Simulations were performed using the CloudSimPlus (https://cloudsimplus.org/) simulator version 7.2.0. 
